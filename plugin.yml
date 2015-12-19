@@ -3,3 +3,11 @@ main: Parkour\Main
 version: 1.0.0
 api: [1.0.0]
 author: wolfdale
+commands:
+    staff:
+        usage: /pclear
+        description: clear parkour
+permissions:
+    Parkour.pclear:
+        default: true
+        description: Allows user to use /pclear
