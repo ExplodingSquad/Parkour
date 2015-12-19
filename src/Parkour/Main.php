@@ -59,5 +59,8 @@ class Main extends PluginBase implements Listener{
                 if (!($sender instanceof Player)){
                     $this->config->_unset($sender,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
                     return true;
-                }	
+                	
+                }
+                }
+        }
 }
