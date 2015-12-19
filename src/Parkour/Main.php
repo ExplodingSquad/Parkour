@@ -9,7 +9,7 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\utils\TextFormat;
 use pocketmine\Player;
 use pocketmine\tile\Sign;
-use pocketmine\math\Position;
+use pocketmine\Level\Position;
 
 class Main extends PluginBase implements Listener{
 	
