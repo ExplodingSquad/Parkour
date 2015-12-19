@@ -52,15 +52,4 @@ class Main extends PluginBase implements Listener{
 			}
 		}
 	}
-	public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
-        $cmd = strtolower($command->getName());
-        switch ($cmd){
-            case "pclear":
-                if (!($sender instanceof Player)){
-                    $this->config->_unset($sender,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
-                    return true;
-                	
-                }
-                }
-        }
 }
