@@ -19,6 +19,8 @@ class Main extends PluginBase implements Listener{
 	public function onEnable(){
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		@mkdir($this->getDataFolder());
+                $this->saveDefaultConfig();
+                $this->getResource("config.yml");		
 	    $this->config = new Config($this->getDataFolder()."Data.yml", Config::YAML, array());
 	}
 	
@@ -52,4 +54,21 @@ class Main extends PluginBase implements Listener{
 			}
 		}
 	}
+     public function onVoidLoop(PlayerMoveEvent $event){
+          if($event->getTo()->getFloorY() < 0){
+              $enableConf = $this->getConfig()->get("enableConf");
+              $X = $this->getConfig()->get("X");
+              $Y = $this->getConfig()->get("Y");
+             $Z = $this->getConfig()->get("Z");
+             $Level = $this->getConfig()->get("Level");
+             $player = $event->getPlayer();
+             if($enableConf === false){
+                 $player->teleport($this->getServer()->getDefaultLevel()->getSpawn());
+                 $player->setHealth($player->getHealth() - ($this->getConfig()->get("hearts")));
+             }else{
+                 $player->teleport(new Vector3($X, $Y+4, $Z, $Level));
+                 $player->setHealth($player->getHealth() - ($this->getConfig()->get("hearts")));
+             }
+         }
+     }
 }
