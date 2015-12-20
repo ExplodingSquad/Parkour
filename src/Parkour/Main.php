@@ -9,10 +9,8 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\utils\TextFormat;
 use pocketmine\Player;
 use pocketmine\tile\Sign;
-
 use pocketmine\level\Position;
 use pocketmine\level\Level;
-use pocketmine\Player;
 use pocketmine\entity\Entity;
 use pocketmine\math\Vector3;
 use pocketmine\event\player\PlayerMoveEvent;
