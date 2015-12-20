@@ -9,7 +9,7 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\utils\TextFormat;
 use pocketmine\Player;
 use pocketmine\tile\Sign;
-use pocketmine\Level\Position;
+
 use pocketmine\level\Position;
 use pocketmine\level\Level;
 use pocketmine\Player;
