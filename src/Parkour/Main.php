@@ -60,12 +60,14 @@ class Main extends PluginBase implements Listener{
 	}
      public function onVoidLoop(PlayerMoveEvent $event){
           if($event->getTo()->getFloorY() < 0){
-              $enableConf = $this->getConfig()->get("enableConf");
-              $X = $this->getConfig()->get("X");
-              $Y = $this->getConfig()->get("Y");
-             $Z = $this->getConfig()->get("Z");
-             $Level = $this->getConfig()->get("Level");
-             $player = $event->getPlayer();
+                $enableConf = $this->getConfig()->get("enableConf");
+                $X = $this->getConfig()->get("X");
+                $Y = $this->getConfig()->get("Y");
+                $Z = $this->getConfig()->get("Z");
+                $Level = $this->getConfig()->get("Level");
+                $player = $event->getPlayer();
+	        $b = $event->getBlock();
+	        $name = $event->getPlayer()->getName();
              if($enableConf === false){
 				$pos = $this->config->get($name);
 				if(is_array($pos)){
