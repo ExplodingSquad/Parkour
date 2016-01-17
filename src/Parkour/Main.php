@@ -44,8 +44,9 @@ class Main extends PluginBase implements Listener{
 				$player->sendMessage("Saved");
 		}
 	}
+	
      public function onVoidLoop(PlayerMoveEvent $event){
-          if($event->getTo()->getFloorY() < 0);
+          if($event->getTo()->getFloorY() < 0){
              	$player = $event->getPlayer();
              	$name = $event->getPlayer()->getName();             	
              	$name = strtolower($name);
@@ -60,7 +61,8 @@ class Main extends PluginBase implements Listener{
 						}
 					}else $player->sendMessage("Save Corrupted");
 				}else $player->sendMessage("No Save Found");
-			}
+          }
+     }
              }else{
              	$player = $event->getPlayer();
              	$name = $event->getPlayer()->getName();
