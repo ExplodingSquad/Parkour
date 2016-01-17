@@ -67,12 +67,23 @@ class Main extends PluginBase implements Listener{
              $Level = $this->getConfig()->get("Level");
              $player = $event->getPlayer();
              if($enableConf === false){
-                 $player->teleport($this->getServer()->getDefaultLevel()->getSpawn());
-                 $player->setHealth($player->getHealth() - ($this->getConfig()->get("hearts")));
+                 $player->sendMessage("Teleporting to Checkpoint...");
+						$level = $this->getServer()->getLevelByName($pos[3]);
+						if($level) $player->teleport(new Position($pos[0],$pos[1],$pos[2],$level));
+						else{
+							$player->sendMessage("Level is not loaded");
+						}
+					}else $player->sendMessage("Save Corrupted");
+				}else $player->sendMessage("No Save Found");
              }else{
-                 $player->teleport(new Vector3($X, $Y+4, $Z, $Level));
-                 $player->setHealth($player->getHealth() - ($this->getConfig()->get("hearts")));
-             }
-         }
-     }
-}
+             	$player->sendMessage("Teleporting to Checkpoint...");
+						$level = $this->getServer()->getLevelByName($pos[3]);
+						if($level) $player->teleport(new Position($pos[0],$pos[1],$pos[2],$level));
+						else{
+							$player->sendMessage("Level is not loaded");
+						}
+					}else $player->sendMessage("Save Corrupted");
+				}else $player->sendMessage("No Save Found");
+				}
+				}
+				}
