@@ -67,7 +67,6 @@ class Main extends PluginBase implements Listener{
              $Level = $this->getConfig()->get("Level");
              $player = $event->getPlayer();
              if($enableConf === false){
-			}elseif(TextFormat::clean($sign[0]) === '[To Checkpoint]'{
 				$pos = $this->config->get($name);
 				if(is_array($pos)){
 					if(count($pos) === 4){
@@ -81,7 +80,6 @@ class Main extends PluginBase implements Listener{
 				}else $player->sendMessage("No Save Found");
 			}
              }else{
-             }elseif(TextFormat::clean($sign[0]) === '[To Checkpoint]'){
 				$pos = $this->config->get($name);
 				if(is_array($pos)){
 					if(count($pos) === 4){
