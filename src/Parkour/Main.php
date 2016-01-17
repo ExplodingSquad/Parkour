@@ -21,10 +21,15 @@ class Main extends PluginBase implements Listener{
 	private $pos;
 
 	public function onEnable(){
+		$this->getServer()->getLogger()->info(TextFormat::BLUE."Parkour Has Been Enable");
+		$this->getServer()->getLogger()->info(TextFormat::BLUE."By: Driesboy");
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		@mkdir($this->getDataFolder());
 		    $this->saveDefaultConfig();
 	    $this->config = new Config($this->getDataFolder()."Data.yml", Config::YAML, array());
+	}
+	
+	public function onDisable(){
 	}
 	
 	public function onPlayerTouch(PlayerInteractEvent $event){
