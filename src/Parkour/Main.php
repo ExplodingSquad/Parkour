@@ -52,10 +52,9 @@ class Main extends PluginBase implements Listener{
              	$name = strtolower($name);
              	$pos = $this->config->get($name);
 				if(is_array($pos)){
-					if(count($pos) === 4){
 						$player->sendMessage("Teleporting to Checkpoint...");
 						$level = $this->getServer()->getLevelByName($pos[3]);
-						if($level) $player->teleport(new Position($pos[0],$pos[1],$pos[2],$level));
+						$player->teleport(new Position($pos[0],$pos[1],$pos[2],$level));
 					}else $player->sendMessage("Error");
 				}
           }
