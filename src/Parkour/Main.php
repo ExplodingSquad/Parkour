@@ -67,8 +67,11 @@ class Main extends PluginBase implements Listener{
              $Level = $this->getConfig()->get("Level");
              $player = $event->getPlayer();
              if($enableConf === false){
-             	if(is_array($pos)){
-                 $player->sendMessage("Teleporting to Checkpoint...");
+			}elseif(TextFormat::clean($sign[0]) === '[To Checkpoint]'{
+				$pos = $this->config->get($name);
+				if(is_array($pos)){
+					if(count($pos) === 4){
+						$player->sendMessage("Teleporting to Checkpoint...");
 						$level = $this->getServer()->getLevelByName($pos[3]);
 						if($level) $player->teleport(new Position($pos[0],$pos[1],$pos[2],$level));
 						else{
@@ -76,9 +79,13 @@ class Main extends PluginBase implements Listener{
 						}
 					}else $player->sendMessage("Save Corrupted");
 				}else $player->sendMessage("No Save Found");
+			}
              }else{
-             	if(is_array($pos)){
-             	$player->sendMessage("Teleporting to Checkpoint...");
+             }elseif(TextFormat::clean($sign[0]) === '[To Checkpoint]'){
+				$pos = $this->config->get($name);
+				if(is_array($pos)){
+					if(count($pos) === 4){
+						$player->sendMessage("Teleporting to Checkpoint...");
 						$level = $this->getServer()->getLevelByName($pos[3]);
 						if($level) $player->teleport(new Position($pos[0],$pos[1],$pos[2],$level));
 						else{
@@ -86,4 +93,5 @@ class Main extends PluginBase implements Listener{
 						}
 					}else $player->sendMessage("Save Corrupted");
 				}else $player->sendMessage("No Save Found");
+			}
      }
