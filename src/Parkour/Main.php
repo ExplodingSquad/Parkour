@@ -24,7 +24,6 @@ class Main extends PluginBase implements Listener{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		@mkdir($this->getDataFolder());
 		    $this->saveDefaultConfig();
-                    $this->getResource("config.yml");
 	    $this->config = new Config($this->getDataFolder()."Data.yml", Config::YAML, array());
 	}
 	
@@ -60,15 +59,10 @@ class Main extends PluginBase implements Listener{
 	}
      public function onVoidLoop(PlayerMoveEvent $event){
           if($event->getTo()->getFloorY() < 0){
-                $enableConf = $this->getConfig()->get("enableConf");
-                $X = $this->getConfig()->get("X");
-                $Y = $this->getConfig()->get("Y");
-                $Z = $this->getConfig()->get("Z");
-                $Level = $this->getConfig()->get("Level");
              if($enableConf === false){
              	$player = $event->getPlayer();
+             	$name = $event->getPlayer()->getName();             	
              	$name = strtolower($name);
-             	$name = $event->getPlayer()->getName();
              	$pos = $this->config->get($name);
 				if(is_array($pos)){
 					if(count($pos) === 4){
