@@ -67,7 +67,6 @@ class Main extends PluginBase implements Listener{
                 $Level = $this->getConfig()->get("Level");
                 $player = $event->getPlayer();
 	        $name = $event->getPlayer()->getName();
-	        $b = $event->getBlock();
              if($enableConf === false){
              	$pos = $this->config->get($name);
 				if(is_array($pos)){
