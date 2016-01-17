@@ -46,7 +46,7 @@ class Main extends PluginBase implements Listener{
 		}
 	}
      public function onVoidLoop(PlayerMoveEvent $event){
-          if($event->getTo()->getFloorY() < 0){
+          if($event->getTo()->getFloorY() 1){
              	$player = $event->getPlayer();
              	$name = $event->getPlayer()->getName();             	
              	$name = strtolower($name);
