@@ -26,7 +26,8 @@ class Main extends PluginBase implements Listener{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		@mkdir($this->getDataFolder());
 		    $this->saveDefaultConfig();
-	    $this->config = new Config($this->getDataFolder()."Data.yml", Config::YAML, array());
+	    $this->data = new Config($this->getDataFolder()."Data.yml", Config::YAML, array());
+	    $this->config = new Config($this->getDataFolder()."Config.yml", Config::YAML, array());
 	}
 	
 	public function onDisable(){
@@ -44,8 +45,8 @@ class Main extends PluginBase implements Listener{
 			}
 			$sign = $sign->getText();
 			if(TextFormat::clean($sign[0]) === '[Checkpoint]'){
-				$this->config->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
-				$this->config->save();
+				$this->data->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
+				$this->data->save();
 				$player->sendMessage("Saved");
 			}
 		}
@@ -55,7 +56,7 @@ class Main extends PluginBase implements Listener{
              	$player = $event->getPlayer();
              	$name = $event->getPlayer()->getName();             	
              	$name = strtolower($name);
-             	$pos = $this->config->get($name);
+             	$pos = $this->data->get($name);
 				if(is_array($pos)){
 						$player->sendMessage("Teleporting to Checkpoint...");
 						$level = $this->getServer()->getLevelByName($pos[3]);
