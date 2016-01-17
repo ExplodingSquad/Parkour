@@ -68,10 +68,8 @@ class Main extends PluginBase implements Listener{
                 $player = $event->getPlayer();
 	        $name = $event->getPlayer()->getName();
 	        $b = $event->getBlock();
+	        $pos = $this->config->get($name);
              if($enableConf === false){
-             	$b = $event->getBlock();
-             	$name = $event->getPlayer()->getName();
-				$pos = $this->config->get($name);
 				if(is_array($pos)){
 					if(count($pos) === 4){
 						$player->sendMessage("Teleporting to Checkpoint...");
@@ -84,8 +82,6 @@ class Main extends PluginBase implements Listener{
 				}else $player->sendMessage("No Save Found");
 			}
              }else{
-             	$name = $event->getPlayer()->getName();
-				$pos = $this->config->get($name);
 				if(is_array($pos)){
 					if(count($pos) === 4){
 						$player->sendMessage("Teleporting to Checkpoint...");
