@@ -84,7 +84,6 @@ class Main extends PluginBase implements Listener{
 				}else $player->sendMessage("No Save Found");
 			}
              }else{
-             	$b = $event->getBlock();
              	$name = $event->getPlayer()->getName();
 				$pos = $this->config->get($name);
 				if(is_array($pos)){
