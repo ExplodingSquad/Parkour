@@ -67,7 +67,9 @@ class Main extends PluginBase implements Listener{
                 $Level = $this->getConfig()->get("Level");
                 $player = $event->getPlayer();
 	        $name = $event->getPlayer()->getName();
+	        $b = $event->getBlock();
              if($enableConf === false){
+             	$b = $event->getBlock();
              	$name = $event->getPlayer()->getName();
 				$pos = $this->config->get($name);
 				if(is_array($pos)){
@@ -82,6 +84,7 @@ class Main extends PluginBase implements Listener{
 				}else $player->sendMessage("No Save Found");
 			}
              }else{
+             	$b = $event->getBlock();
              	$name = $event->getPlayer()->getName();
 				$pos = $this->config->get($name);
 				if(is_array($pos)){
