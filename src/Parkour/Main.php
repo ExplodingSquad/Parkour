@@ -42,9 +42,9 @@ class Main extends PluginBase implements Listener{
 				$this->config->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 				$this->config->save();
 				$player->sendMessage("Saved");
+			}
 		}
 	}
-	
      public function onVoidLoop(PlayerMoveEvent $event){
           if($event->getTo()->getFloorY() < 0){
              	$player = $event->getPlayer();
