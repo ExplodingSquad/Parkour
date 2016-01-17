@@ -42,24 +42,10 @@ class Main extends PluginBase implements Listener{
 				$this->config->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 				$this->config->save();
 				$player->sendMessage("Saved");
-			}elseif(TextFormat::clean($sign[0]) === '[To Checkpoint]'){
-				$pos = $this->config->get($name);
-				if(is_array($pos)){
-					if(count($pos) === 4){
-						$player->sendMessage("Teleporting to Checkpoint...");
-						$level = $this->getServer()->getLevelByName($pos[3]);
-						if($level) $player->teleport(new Position($pos[0],$pos[1],$pos[2],$level));
-						else{
-							$player->sendMessage("Level is not loaded");
-						}
-					}else $player->sendMessage("Save Corrupted");
-				}else $player->sendMessage("No Save Found");
-			}
 		}
 	}
      public function onVoidLoop(PlayerMoveEvent $event){
-          if($event->getTo()->getFloorY() < 0){
-             if($enableConf === false){
+          if($event->getTo()->getFloorY() < 0);
              	$player = $event->getPlayer();
              	$name = $event->getPlayer()->getName();             	
              	$name = strtolower($name);
