@@ -57,3 +57,5 @@ class Main extends PluginBase implements Listener{
 						$player->teleport(new Position($pos[0],$pos[1],$pos[2],$level));
 					}else $player->sendMessage("Error");
           }
+     }
+}
