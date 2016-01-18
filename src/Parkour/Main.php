@@ -47,7 +47,7 @@ class Main extends PluginBase implements Listener{
 			if(TextFormat::clean($sign[0]) === '[Checkpoint]'){
 				$this->data->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 				$this->data->save();
-				$player->sendMessage("Saved");
+				$player->sendMessage . $this->config->get("CheckpointSaved");
 			}
 		}
 	}
