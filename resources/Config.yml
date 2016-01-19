@@ -6,5 +6,5 @@
 #|_____/|_|  |_|\___||___/_.__/ \___/ \__, |
 #                                      __/ |
 #                                     |___/
-CheckpointSaved: Saved
-TeleportMessage: Teleporting to Checkpoint...
+CheckpointSaved: §bSaved
+TeleportMessage: §6Teleporting to Checkpoint...
