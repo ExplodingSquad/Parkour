@@ -58,7 +58,7 @@ class Main extends PluginBase implements Listener{
 			if(TextFormat::clean($sign[0]) === '[Checkpoint]'){
 				$this->data->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 				$this->data->save();
-				$player->sendMessage("[{$this->getConfig()->get("CheckpointSaved")}]");
+				$player->sendMessage("{$this->getConfig()->get("CheckpointSaved")}");
 			}
 		}
 	}
@@ -69,8 +69,7 @@ class Main extends PluginBase implements Listener{
              	$name = strtolower($name);
              	$pos = $this->data->get($name);
 				if(is_array($pos)){
-					$player->sendMessage("[{$this->getConfig()->get("TeleportMessage")}]");
-						$player->sendMessage . $this->config->get("TeleportMessage");
+					$player->sendMessage("{$this->getConfig()->get("TeleportMessage")}");
 						$level = $this->getServer()->getLevelByName($pos[3]);
 						$player->teleport(new Position($pos[0],$pos[1],$pos[2],$level));
 					}else $player->sendMessage("Error");
