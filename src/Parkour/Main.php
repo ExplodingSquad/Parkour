@@ -1,4 +1,15 @@
 <?php
+/*
+  _____       _           _                 
+ |  __ \     (_)         | |                
+ | |  | |_ __ _  ___  ___| |__   ___  _   _ 
+ | |  | | '__| |/ _ \/ __| '_ \ / _ \| | | |
+ | |__| | |  | |  __/\__ \ |_) | (_) | |_| |
+ |_____/|_|  |_|\___||___/_.__/ \___/ \__, |
+                                       __/ |
+                                      |___/
+*/
+
 namespace Parkour;
 
 use pocketmine\plugin\PluginBase;
@@ -26,7 +37,8 @@ class Main extends PluginBase implements Listener{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		@mkdir($this->getDataFolder());
 		    $this->saveDefaultConfig();
-	    $this->config = new Config($this->getDataFolder()."Data.yml", Config::YAML, array());
+	    $this->data = new Config($this->getDataFolder()."Data.yml", Config::YAML, array());
+	    $this->config = new Config($this->getDataFolder()."Config.yml", Config::YAML, array());
 	}
 	
 	public function onDisable(){
@@ -44,9 +56,9 @@ class Main extends PluginBase implements Listener{
 			}
 			$sign = $sign->getText();
 			if(TextFormat::clean($sign[0]) === '[Checkpoint]'){
-				$this->config->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
-				$this->config->save();
-				$player->sendMessage("Saved");
+				$this->data->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
+				$this->data->save();
+				$player->sendMessage . $this->config->get("CheckpointSaved");
 			}
 		}
 	}
@@ -55,9 +67,9 @@ class Main extends PluginBase implements Listener{
              	$player = $event->getPlayer();
              	$name = $event->getPlayer()->getName();             	
              	$name = strtolower($name);
-             	$pos = $this->config->get($name);
+             	$pos = $this->data->get($name);
 				if(is_array($pos)){
-						$player->sendMessage("Teleporting to Checkpoint...");
+						$player->sendMessage . $this->config->get("TeleportMessage");
 						$level = $this->getServer()->getLevelByName($pos[3]);
 						$player->teleport(new Position($pos[0],$pos[1],$pos[2],$level));
 					}else $player->sendMessage("Error");
