@@ -55,7 +55,7 @@ class Main extends PluginBase implements Listener{
 				return;
 			}
 			$sign = $sign->getText();
-			if(TextFormat::clean($sign[0]) === '[Checkpoint]'){
+			if(TextFormat::clean($sign[0]) === "{$this->getConfig()->get("Sign")}"){
 				$this->data->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 				$this->data->save();
 				$player->sendMessage("{$this->getConfig()->get("CheckpointSaved")}");
