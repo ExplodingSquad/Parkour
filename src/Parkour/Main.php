@@ -9,11 +9,10 @@
                                        __/ |
                                       |___/
 */
-
 namespace Parkour;
-
 use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
+use pocketmine\command\ConsoleCommandSender;
 use pocketmine\event\Listener;
 use pocketmine\utils\Config;
 use pocketmine\event\player\PlayerInteractEvent;
@@ -25,12 +24,10 @@ use pocketmine\level\Level;
 use pocketmine\entity\Entity;
 use pocketmine\math\Vector3;
 use pocketmine\event\player\PlayerMoveEvent;
-
 class Main extends PluginBase implements Listener{
 	
 	private $config;
 	private $pos;
-
 	public function onEnable(){
 		$this->getServer()->getLogger()->info(TextFormat::BLUE."Parkour Has Been Enable");
 		$this->getServer()->getLogger()->info(TextFormat::BLUE."By: Driesboy");
@@ -58,6 +55,14 @@ class Main extends PluginBase implements Listener{
 				$this->data->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 				$this->data->save();
 				$player->sendMessage("{$this->getConfig()->get("CheckpointSaved")}");
+			}
+			if(TextFormat::clean($sign[0]) === '[Earn Reward]'){
+				$this->data->remove($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
+				$this->data->save();
+				$player->sendMessage("{$this->getConfig()->get("EarnReward")}");
+				if($this->getConfig()->get("reward-command")){
+					$player->getServer()->dispatchCommand(new ConsoleCommandSender(), str_ireplace("{PLAYER}", $player->getName(), $this->getConfig()->get("reward-command")));
+				}
 			}
 		}
 	}
