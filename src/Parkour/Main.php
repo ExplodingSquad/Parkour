@@ -59,11 +59,6 @@ class Main extends PluginBase implements Listener{
 				$this->data->save();
 				$player->sendMessage("{$this->getConfig()->get("CheckpointSaved")}");
 			}
-			if(TextFormat::clean($sign[0]) === '[Earn Reward]'){
-				$this->data->unset($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
-				$this->data->save();
-				$player->sendMessage("{$this->getConfig()->get("Earn Reward")}");
-			}
 		}
 	}
      public function onVoidLoop(PlayerMoveEvent $event){
