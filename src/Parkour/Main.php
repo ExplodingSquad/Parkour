@@ -38,7 +38,6 @@ class Main extends PluginBase implements Listener{
 		@mkdir($this->getDataFolder());
 		    $this->saveDefaultConfig();
 	    $this->data = new Config($this->getDataFolder()."Data.yml", Config::YAML, array());
-	    $this->config = new Config($this->getDataFolder()."Config.yml", Config::YAML, array());
 	}
 	
 	public function onDisable(){
