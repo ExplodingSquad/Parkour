@@ -77,8 +77,7 @@ class Main extends PluginBase implements Listener{
 						$level = $this->getServer()->getLevelByName($pos[3]);
 						$player->teleport(new Position($pos[0],$pos[1],$pos[2],$level));
 					}else $player->sendMessage("{$this->getConfig()->get("No-Checkpoint")}");
-					$world = $this->getServer()->getLevelByName($level);
-					$event->getPlayer()->teleport($world->getSafeSpawn());
+					$player->teleport($player->getLevel()->getSafeSpawn());
           }
      }
 }
