@@ -62,6 +62,7 @@ class Main extends PluginBase implements Listener{
 				$player->sendMessage("{$this->getConfig()->get("EarnReward")}");
 				if($this->getConfig()->get("reward-command")){
 					$player->getServer()->dispatchCommand(new ConsoleCommandSender(), str_ireplace("{PLAYER}", $player->getName(), $this->getConfig()->get("reward-command")));
+					$player->teleport($player->getLevel()->getSafeSpawn());
 				}
 			}
 		}
