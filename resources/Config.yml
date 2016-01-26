@@ -10,4 +10,4 @@ CheckpointSaved: §bSaved
 TeleportMessage: §6Teleporting to Checkpoint...
 reward-command: givemoney {PLAYER} 50
 EarnReward: You have finish the parkour
-No-Checkpoint:
+No-Checkpoint: No Checkpoint founded
