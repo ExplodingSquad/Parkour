@@ -7,7 +7,7 @@
 #                                      __/ |
 #                                     |___/
 CheckpointSaved: §7> §aCheckpoint saved§e!
-TeleportMessage: §7> §aTeleported back to checkpoint§e!
+TeleportMessage: §7> §aTeleported back to your set checkpoint§e!
 reward-command: givemoney {PLAYER} 50
 EarnReward: §7> §aYou've finished the parkour§e! §bGood job§e!
 No-Checkpoint: §7> §cNo checkpoint found§e.
