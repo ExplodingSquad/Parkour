@@ -29,8 +29,8 @@ class Main extends PluginBase implements Listener{
 	private $config;
 	private $pos;
 	public function onEnable(){
-		$this->getServer()->getLogger()->info(TextFormat::BLUE."Parkour Has Been Enable");
-		$this->getServer()->getLogger()->info(TextFormat::BLUE."By: Driesboy");
+		$this->getServer()->getLogger()->info(TextFormat::BLUE."Parkour Has Been Enabled.");
+		$this->getServer()->getLogger()->info(TextFormat::BLUE."By: Driesboy. http://github.com/Driesboy");
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		@mkdir($this->getDataFolder());
 		    $this->saveDefaultConfig();
