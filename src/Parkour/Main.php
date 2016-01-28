@@ -24,13 +24,14 @@ use pocketmine\level\Level;
 use pocketmine\entity\Entity;
 use pocketmine\math\Vector3;
 use pocketmine\event\player\PlayerMoveEvent;
+
 class Main extends PluginBase implements Listener{
 	
 	private $config;
 	private $pos;
 	public function onEnable(){
-		$this->getServer()->getLogger()->info(TextFormat::BLUE."Parkour Has Been Enabled.");
-		$this->getServer()->getLogger()->info(TextFormat::BLUE."By: Driesboy. http://github.com/Driesboy");
+		$this->getServer()->getLogger()->info(TextFormat::BLUE . "Parkour Has Been Enabled.");
+		$this->getServer()->getLogger()->info(TextFormat::BLUE . "By: Driesboy. http://github.com/Driesboy");
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		@mkdir($this->getDataFolder());
 		    $this->saveDefaultConfig();
@@ -38,6 +39,7 @@ class Main extends PluginBase implements Listener{
 	}
 	
 	public function onDisable(){
+		$this->getServer()->getLogger()->info(TextFormat::GRAY . ">" . TextFormat::RED . "RED" . "Parkour was disabled.")
 	}
 	
 	public function onPlayerTouch(PlayerInteractEvent $event){
