@@ -39,7 +39,7 @@ class Main extends PluginBase implements Listener{
 	}
 	
 	public function onDisable(){
-		$this->getServer()->getLogger()->info(TextFormat::GRAY . ">" . TextFormat::RED . "RED" . "Parkour was disabled.")
+		$this->getServer()->getLogger()->info(TextFormat::GRAY . ">" . TextFormat::RED . "RED" . "Parkour was disabled.");
 	}
 	
 	public function onPlayerTouch(PlayerInteractEvent $event){
