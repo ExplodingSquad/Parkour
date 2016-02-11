@@ -83,18 +83,17 @@ class Main extends PluginBase implements Listener{
 					}else{ $player->sendMessage("{$this->getConfig()->get("No-Checkpoint")}");
 					$player->teleport($player->getLevel()->getSafeSpawn());
 					}
-          }
-     }
-         public function onCommand(CommandSender $sender, Command $command, $label, array $args){
-        switch($command->getName()){
-        case "clearparkour":
-        	if ($player->hasPermission("parkour.clear")){
-                $this->data->remove($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
-				$this->data->save();
-				$player->sendMessage("{$this->getConfig()->get("clearparkour")}");
-        	}
-        	}
-				
+                }
+        }
+        public function onCommand(CommandSender $sender, Command $command, $label, array $args){
+                switch($command->getName()){
+                        case "clearparkour":
+        	                if ($player->hasPermission("parkour.clear")){
+                                        $this->data->remove($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
+                                        $this->data->save();
+                                        $player->sendMessage("{$this->getConfig()->get("clearparkour")}");
+        	                }
+                }
         return true;
 	}
 }
