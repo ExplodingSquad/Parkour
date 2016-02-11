@@ -11,3 +11,4 @@ TeleportMessage: §7> §aTeleported back to your set checkpoint§e!
 reward-command: givemoney {PLAYER} 50
 EarnReward: §7> §aYou've finished the parkour§e! §bGood job§e!
 No-Checkpoint: §7> §cNo checkpoint found§e.
+ClearParkour: §7> §csuccesfull cleared parkour§e.
