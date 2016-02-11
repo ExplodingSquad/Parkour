@@ -12,6 +12,7 @@
 namespace Parkour;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
+use pocketmine\command\Command;
 use pocketmine\command\ConsoleCommandSender;
 use pocketmine\event\Listener;
 use pocketmine\utils\Config;
@@ -84,22 +85,16 @@ class Main extends PluginBase implements Listener{
 					}
           }
      }
-         public function onCommand(CommandSender $sender, Command $command, $label, array $args)
-	{
+         public function onCommand(CommandSender $sender, Command $command, $label, array $args){
         switch($command->getName()){
         case "clearparkour":
-                $pos = $this->config->get($name);
-				if(is_array($pos)){
-					if(count($pos) === 3){
-						$player->sendMessage("Teleporting to Checkpoint...");
-						$level = $this->getServer()->getLevelByName($pos[3]);
-						if($level) $player->teleport(new Position($pos[0],$pos[1],$pos[2],$level));
-						else{
-							$player->sendMessage("Level is not loaded");
-						}
-					}else $player->sendMessage("Save Corrupted");
-				        }else $player->sendMessage("No Save Found");
-                }
+        	if ($player->hasPermission("parkour.clear")){
+                $this->data->remove($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
+				$this->data->save();
+				$player->sendMessage("{$this->getConfig()->get("clearparkour")}");
+        	}
+        	}
+				
         return true;
 	}
 }
