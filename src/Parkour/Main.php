@@ -93,13 +93,15 @@ class Main extends PluginBase implements Listener{
                                         $this->data->save();
                                         $player->sendMessage("{$this->getConfig()->get("clearparkour")}");
         	                }
+        	                return true;
         	        case "tocheckpoint":
         	                if ($player->hasPermission("parkour.tocheckpoint")){
                                         $this->data->remove($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
                                         $this->data->save();
                                         $player->sendMessage("{$this->getConfig()->get("TeleportMessage")}");
         	                }
+        	                return true;
                 }
-        return true;
+                break;
 	}
 }
