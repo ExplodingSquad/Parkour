@@ -25,7 +25,7 @@ use pocketmine\entity\Entity;
 use pocketmine\math\Vector3;
 use pocketmine\event\player\PlayerMoveEvent;
 
-class Main extends PluginBase{
+class Main extends PluginBase implements Listener{
 	
 	private $config;
 	private $pos;
