@@ -27,7 +27,7 @@ use pocketmine\entity\Entity;
 use pocketmine\math\Vector3;
 use pocketmine\event\player\PlayerMoveEvent;
 
-class Main extends PluginBase{
+class Main extends PluginBase implements Listener{
 	
 	private $config;
 	private $pos;
@@ -70,7 +70,7 @@ class Main extends PluginBase{
 				}
 			}
 		}
-		if($b->getID() == $this->getConfig()->get("CheckPointBlock")){
+		if($b->getID() == {$this->getConfig()->get("CheckPointBlock")}){
 			$this->data->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 			$this->data->save();
 			$player->sendMessage("{$this->getConfig()->get("CheckpointSaved")}");
