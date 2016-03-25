@@ -38,8 +38,6 @@ class Main extends PluginBase implements Listener{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		@mkdir($this->getDataFolder());
 		    $this->saveDefaultConfig();
-		    $this->getCommand('clearparkour')->setExecutor(new Commands());
-		    $this->getCommand('tocheckpoint')->setExecutor(new Commands());
 	    $this->data = new Config($this->getDataFolder()."Data.yml", Config::YAML, array());
 	}
 	
@@ -92,18 +90,6 @@ class Main extends PluginBase implements Listener{
 					}else{ $player->sendMessage("{$this->getConfig()->get("No-Checkpoint")}");
 					$player->teleport($player->getLevel()->getSafeSpawn());
 			}
-                }
-        }
-        public function onCommand(CommandSender $sender, Command $command, $label, array $args){
-                switch($command->getName()){
-                        case "clearparkour":
-                                        $this->data->remove($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
-                                        $this->data->save();
-                                        $player->sendMessage("{$this->getConfig()->get("clearparkour")}");
-        	        case "tocheckpoint":
-                                        $this->data->remove($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
-                                        $this->data->save();
-                                        $player->sendMessage("{$this->getConfig()->get("TeleportMessage")}");
                 }
         }
 }
