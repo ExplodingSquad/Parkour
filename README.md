@@ -7,7 +7,7 @@ port 19132
 
 ### How it works:
 
-1: Create a sign with the text [Checkpoint] and [Earn Reward]
+1: Create a sign with the text [Checkpoint] or Block (see config to change block id) and [Earn Reward]
 
 2: If the player falls from the parkour, they fall into the void.
 
