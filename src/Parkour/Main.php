@@ -12,7 +12,10 @@
 namespace Parkour;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
+use pocketmine\command\CommandSender;
+use pocketmine\command\Command;
 use pocketmine\command\ConsoleCommandSender;
+use pocketmine\command\CommandExecutor;
 use pocketmine\event\Listener;
 use pocketmine\utils\Config;
 use pocketmine\event\player\PlayerInteractEvent;
@@ -68,6 +71,11 @@ class Main extends PluginBase implements Listener{
 				}
 			}
 		}
+		if($b->getID() == $this->getConfig()->get("CheckPointBlock")){
+			$this->data->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
+			$this->data->save();
+			$player->sendMessage("{$this->getConfig()->get("CheckpointSaved")}");
+		}
 	}
      public function onVoidLoop(PlayerMoveEvent $event){
           if($event->getTo()->getFloorY() < 1){
@@ -81,7 +89,7 @@ class Main extends PluginBase implements Listener{
 						$player->teleport(new Position($pos[0],$pos[1],$pos[2],$level));
 					}else{ $player->sendMessage("{$this->getConfig()->get("No-Checkpoint")}");
 					$player->teleport($player->getLevel()->getSafeSpawn());
-					}
-          }
-     }
+			}
+                }
+        }
 }
