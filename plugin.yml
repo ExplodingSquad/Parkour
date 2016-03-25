@@ -3,8 +3,3 @@ main: Parkour\Main
 version: 3.0
 api: [1.0.0]
 author: Driesboy
-commands:
-  clearparkour:
-  description: clear checkpoints
-  tocheckpoint:
-  description: go to checkpoint
