@@ -70,7 +70,7 @@ class Main extends PluginBase implements Listener{
 				}
 			}
 		}
-		if($b->getID() == {$this->getConfig()->get("CheckPointBlock")}){
+		if($b->getID() == $this->getConfig()->get("CheckPointBlock")){
 			$this->data->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 			$this->data->save();
 			$player->sendMessage("{$this->getConfig()->get("CheckpointSaved")}");
