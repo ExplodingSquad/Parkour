@@ -4,19 +4,7 @@ version: 3.0
 api: [1.0.0]
 author: Driesboy
 commands:
- parkour:
-  description: clear checkpoints
-  permission: parkour
   clearparkour:
   description: clear checkpoints
-  permission: parkour.clear
-  toparkour:
+  tocheckpoint:
   description: go to checkpoint
-  permission: parkour.goto
-permissions:
- parkour.clear:
-   description: clear checkpoints
-   default: default
-   parkour.goto:
-   description: clear checkpoints
-   default: default
