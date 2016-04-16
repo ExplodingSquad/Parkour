@@ -77,17 +77,18 @@ class Main extends PluginBase implements Listener{
 		}
 	}
      public function onVoidLoop(PlayerMoveEvent $event){
-          if($event->getTo()->getFloorY() < 1){
-          	if($player->getLevel()->getName() == $this->getConfig()->get("world")){
-             	$player = $event->getPlayer();
-             	$name = $event->getPlayer()->getName();             	
-             	$name = strtolower($name);
-             	$pos = $this->data->get($name);
-				if(is_array($pos)){
+     	if($player->getLevel()->getName() === $this->getConfig()->get("world")){
+          	if($event->getTo()->getFloorY() < 1){
+             		$player = $event->getPlayer();
+             		$name = $event->getPlayer()->getName();             	
+             		$name = strtolower($name);
+             		$pos = $this->data->get($name);
+			if(is_array($pos)){
 					$player->sendMessage("{$this->getConfig()->get("TeleportMessage")}");
-						$level = $this->getServer()->getLevelByName($pos[3]);
-						$player->teleport(new Position($pos[0],$pos[1],$pos[2],$level));
-					}else{ $player->sendMessage("{$this->getConfig()->get("No-Checkpoint")}");
+					$level = $this->getServer()->getLevelByName($pos[3]);
+					$player->teleport(new Position($pos[0],$pos[1],$pos[2],$level));
+				}else{ 
+					$player->sendMessage("{$this->getConfig()->get("No-Checkpoint")}");
 					$player->teleport($player->getLevel()->getSafeSpawn());
 			}
                 }
