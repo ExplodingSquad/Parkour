@@ -78,6 +78,7 @@ class Main extends PluginBase implements Listener{
 	}
      public function onVoidLoop(PlayerMoveEvent $event){
           if($event->getTo()->getFloorY() < 1){
+          	if($player->getLevel()->getName() == $this->getConfig()->get("world")){
              	$player = $event->getPlayer();
              	$name = $event->getPlayer()->getName();             	
              	$name = strtolower($name);
@@ -90,5 +91,6 @@ class Main extends PluginBase implements Listener{
 					$player->teleport($player->getLevel()->getSafeSpawn());
 			}
                 }
+          }
         }
 }
