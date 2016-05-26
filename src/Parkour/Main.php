@@ -63,7 +63,7 @@ class Main extends PluginBase implements Listener{
 			if(TextFormat::clean($sign[0]) === '[Earn Reward]'){
 				$this->data->remove($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 				$this->data->save();
-				$player->sendMessage("{$this->getConfig()->get("EarnReward")}");
+				$player->sendMessage($this->getConfig()->get("EarnReward"));
 				if($this->getConfig()->get("reward-command")){
 					$player->getServer()->dispatchCommand(new ConsoleCommandSender(), str_ireplace("{PLAYER}", $player->getName(), $this->getConfig()->get("reward-command")));
 					$player->teleport($player->getLevel()->getSafeSpawn());
@@ -73,7 +73,7 @@ class Main extends PluginBase implements Listener{
 		if($b->getID() == $this->getConfig()->get("CheckPointBlock")){
 			$this->data->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 			$this->data->save();
-			$player->sendMessage("{$this->getConfig()->get("CheckpointSaved")}");
+			$player->sendMessage($this->getConfig()->get("CheckpointSaved"));
 		}
 	}
      public function onVoidLoop(PlayerMoveEvent $event){
@@ -85,11 +85,11 @@ class Main extends PluginBase implements Listener{
              		$name = strtolower($name);
              		$pos = $this->data->get($name);
 			if(is_array($pos)){
-					$player->sendMessage("{$this->getConfig()->get("TeleportMessage")}");
+					$player->sendMessage($this->getConfig()->get("TeleportMessage"));
 					$level = $this->getServer()->getLevelByName($pos[3]);
 					$player->teleport(new Position($pos[0],$pos[1],$pos[2],$level));
 				}else{ 
-					$player->sendMessage("{$this->getConfig()->get("No-Checkpoint")}");
+					$player->sendMessage($this->getConfig()->get("No-Checkpoint"));
 					$player->teleport($player->getLevel()->getSafeSpawn());
 			}
                 }
