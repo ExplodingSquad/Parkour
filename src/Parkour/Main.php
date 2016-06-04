@@ -49,7 +49,7 @@ class Main extends PluginBase implements Listener{
 		$b = $event->getBlock();
 		$name = $event->getPlayer()->getName();
 		$name = strtolower($name);
-		if($b->getID() == 63 || $b->getID() == 68){ 
+		if($b->getID() === 63 || $b->getID() === 68){ 
 			$sign = $player->getLevel()->getTile($b);
 			if(!($sign instanceof Sign)){
 				return;
@@ -58,7 +58,7 @@ class Main extends PluginBase implements Listener{
 			if(TextFormat::clean($sign[0]) === '[Checkpoint]'){
 				$this->data->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 				$this->data->save();
-				$player->sendMessage("{$this->getConfig()->get("CheckpointSaved")}");
+				$player->sendMessage($this->getConfig()->get("CheckpointSaved"));
 			}
 			if(TextFormat::clean($sign[0]) === '[Earn Reward]'){
 				$this->data->remove($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
@@ -70,7 +70,7 @@ class Main extends PluginBase implements Listener{
 				}
 			}
 		}
-		if($b->getID() == $this->getConfig()->get("CheckPointBlock")){
+		if($b->getID() === $this->getConfig()->get("CheckPointBlock")){
 			$this->data->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 			$this->data->save();
 			$player->sendMessage($this->getConfig()->get("CheckpointSaved"));
