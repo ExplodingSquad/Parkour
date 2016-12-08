@@ -34,7 +34,7 @@ class Main extends PluginBase implements Listener{
 	private $pos;
 	public function onEnable(){
 		$this->getServer()->getLogger()->info(TextFormat::BLUE . "Parkour Has Been Enabled.");
-		$this->getServer()->getLogger()->info(TextFormat::BLUE . "By: Driesboy. http://github.com/Driesboy");
+		$this->getServer()->getLogger()->info(TextFormat::BLUE . "By: NL-4-DEVS http://github.com/NL-4-DEVS");
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->saveDefaultConfig();
 	    	$this->data = new Config($this->getDataFolder()."Data.yml", Config::YAML, array());
@@ -46,21 +46,19 @@ class Main extends PluginBase implements Listener{
 	
 	public function onPlayerTouch(PlayerInteractEvent $event){
 		$player = $event->getPlayer();
-		$b = $event->getBlock();
-		$name = $event->getPlayer()->getName();
-		$name = strtolower($name);
-		if($b->getID() === 63 || $b->getID() === 68){ 
-			$sign = $player->getLevel()->getTile($b);
+		$name = strtolower($event->getPlayer()->getName());
+		if($event->getBlock()->getID() === 63 || $event->getBlock()->getID() === 68){ 
+			$sign = $player->getLevel()->getTile($event->getBlock());
 			if(!($sign instanceof Sign)){
 				return;
 			}
 			$sign = $sign->getText();
-			if(TextFormat::clean($sign[0]) === '[Checkpoint]'){
+			if(TextFormat::clean($sign->getText()[0]) === '[Checkpoint]'){
 				$this->data->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 				$this->data->save();
 				$player->sendMessage($this->getConfig()->get("CheckpointSaved"));
 			}
-			if(TextFormat::clean($sign[0]) === '[Earn Reward]'){
+			if(TextFormat::clean($sign->getText()[0]) === '[Earn Reward]'){
 				$this->data->remove($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 				$this->data->save();
 				$player->sendMessage($this->getConfig()->get("EarnReward"));
@@ -70,7 +68,7 @@ class Main extends PluginBase implements Listener{
 				}
 			}
 		}
-		if($b->getID() === $this->getConfig()->get("CheckPointBlock")){
+		if($event->getBlock()->getID() === $this->getConfig()->get("CheckPointBlock")){
 			$this->data->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 			$this->data->save();
 			$player->sendMessage($this->getConfig()->get("CheckpointSaved"));
