@@ -53,12 +53,12 @@ class Main extends PluginBase implements Listener{
 				return;
 			}
 			$sign = $sign->getText();
-			if(TextFormat::clean($sign->getText()[0]) === '[Checkpoint]'){
+			if(TextFormat::clean($sign->getText[0]) === '[Checkpoint]'){
 				$this->data->set($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 				$this->data->save();
 				$player->sendMessage($this->getConfig()->get("CheckpointSaved"));
 			}
-			if(TextFormat::clean($sign->getText()[0]) === '[Earn Reward]'){
+			if(TextFormat::clean($sign->getText[0]) === '[Earn Reward]'){
 				$this->data->remove($name,array($player->x,$player->y,$player->z,$player->getLevel()->getName()));
 				$this->data->save();
 				$player->sendMessage($this->getConfig()->get("EarnReward"));
