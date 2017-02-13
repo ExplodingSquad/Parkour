@@ -42,7 +42,7 @@ class Main extends PluginBase implements Listener{
 		$this->getServer()->getLogger()->info(TextFormat::BLUE . "By: NL-4-DEVS http://github.com/NL-4-DEVS");
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->saveDefaultConfig();
-	    $this->data = new Config($this->getDataFolder() . "Data.yml", Config::YAML, array());
+	    	$this->data = new Config($this->getDataFolder() . "Data.yml", Config::YAML, array());
 	}
 	
 	public function onDisable(){
@@ -58,12 +58,12 @@ class Main extends PluginBase implements Listener{
 				return;
 			}
 			$sign = $sign->getText();
-			if(TextFormat::clean($sign->getText()[0]) === '[Checkpoint]'){
+			if(TextFormat::clean($sign->getText[0]) === '[Checkpoint]'){
 				$this->data->set($name, array($player->x, $player->y, $player->z, $player->getLevel()->getName()));
 				$this->data->save();
 				$player->sendMessage($this->getConfig()->get("CheckpointSaved"));
 			}
-			if(TextFormat::clean($sign->getText()[0]) === '[Earn Reward]'){
+			if(TextFormat::clean($sign->getText[0]) === '[Earn Reward]'){
 				$this->data->remove($name, array($player->x, $player->y, $player->z, $player->getLevel()->getName()));
 				$this->data->save();
 				$player->sendMessage($this->getConfig()->get("EarnReward"));
