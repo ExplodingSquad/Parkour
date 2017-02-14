@@ -1,0 +1,7 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/NL-4-DEVS/Parkour
+branches:
+- master
+projects:
+  Parkour:
+    path: ""
+...
